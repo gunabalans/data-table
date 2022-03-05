@@ -1,5 +1,8 @@
 # data-table
 
+Convert existing table to paginated table, boostrap based style
+ 
+
  ## Netkathir data table 
   
   @Example: add id to table
@@ -37,3 +40,10 @@
     </script>
 ```
 ![image](https://user-images.githubusercontent.com/11496339/156862663-b9bd4133-29f6-441b-811d-5070418d3504.png)
+
+
+# License
+data-table is opensource software licensed under the <a href="https://opensource.org/licenses/MIT">MIT</a> license.
+
+ ** @author gunabalans@gmail.com ** 
+ ** @site https://www.netkathir.com **

@@ -31,6 +31,9 @@
  *       paginationContainer: "#pagination"
  *     });
  *   </script>
+ * 
+ * @author gunabalans@gmail.com
+ * @site https://www.netkathir.com
  */
 const Netkathir = {
 
