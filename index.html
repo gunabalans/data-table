@@ -15,13 +15,21 @@
   </head>
   <body>
     <main class="container">
-        <div class="d-flex justify-content-between p-3 my-3 text-white bg-purple rounded shadow-sm" style="background-color: #eef8ed;">
-          <img class="me-3" src="https://www.netkathir.com/images/logo.png" alt="" width="200" height="65">
+      <div
+        class="d-flex justify-content-between p-3 my-3 text-white bg-purple rounded shadow-sm"
+        style="background-color: #eef8ed"
+      >
+        <img
+          class="me-3"
+          src="https://www.netkathir.com/images/logo.png"
+          alt=""
+          width="200"
+          height="65"
+        />
 
-          <select
+        <select
           onchange="Netkathir.paging()"
           class="form-control sm"
-          name="pagesize"
           id="pagesize"
           style="width: 60px"
         >
@@ -31,982 +39,981 @@
           <option value="100">100</option>
           <option value="500">500</option>
         </select>
-        </div>
-      
-        <div class="my-3 p-3 bg-body rounded shadow-sm">
-            <table id="data-table" class="table">
-                <thead>
-                  <tr>
-                    <th>Country</th>
-                    <th>ISO Code</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="s">
-                    <td>AFGHANISTAN</td>
-                    <td>AF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ALBANIA</td>
-                    <td>AL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ALGERIA</td>
-                    <td>DZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>AMERICAN SAMOA</td>
-                    <td>AS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ANDORRA</td>
-                    <td>AD</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ANGOLA</td>
-                    <td>AO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ANTARCTICA</td>
-                    <td>AQ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ANTIGUA AND BARBUDA</td>
-                    <td>AG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ARGENTINA</td>
-                    <td>AR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ARMENIA</td>
-                    <td>AM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ARUBA</td>
-                    <td>AW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>AUSTRALIA</td>
-                    <td>AU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>AUSTRIA</td>
-                    <td>AT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>AZERBAIJAN</td>
-                    <td>AZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BAHAMAS</td>
-                    <td>BS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BAHRAIN</td>
-                    <td>BH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BANGLADESH</td>
-                    <td>BD</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BARBADOS</td>
-                    <td>BB</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BELARUS</td>
-                    <td>BY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BELGIUM</td>
-                    <td>BE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BELIZE</td>
-                    <td>BZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BENIN</td>
-                    <td>BJ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BERMUDA</td>
-                    <td>BM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BHUTAN</td>
-                    <td>BT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BOLIVIA</td>
-                    <td>BO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BOSNIA AND HERZEGOVINA</td>
-                    <td>BA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BOTSWANA</td>
-                    <td>BW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BOUVET ISLAND</td>
-                    <td>BV</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BRAZIL</td>
-                    <td>BR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BRITISH INDIAN OCEAN TERRITORY</td>
-                    <td>IO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BRUNEI DARUSSALAM</td>
-                    <td>BN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BULGARIA</td>
-                    <td>BG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BURKINA FASO</td>
-                    <td>BF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>BURUNDI</td>
-                    <td>BI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CAMBODIA</td>
-                    <td>KH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CAMEROON</td>
-                    <td>CM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CANADA</td>
-                    <td>CA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CAPE VERDE</td>
-                    <td>CV</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CAYMAN ISLANDS</td>
-                    <td>KY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CENTRAL AFRICAN REPUBLIC</td>
-                    <td>CF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CHAD</td>
-                    <td>TD</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CHILE</td>
-                    <td>CL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CHINA</td>
-                    <td>CN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CHRISTMAS ISLAND</td>
-                    <td>CX</td>
-                  </tr>
-                  <tr class="s">
-                    <td>COCOS (KEELING) ISLANDS</td>
-                    <td>CC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>COLOMBIA</td>
-                    <td>CO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>COMOROS</td>
-                    <td>KM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CONGO</td>
-                    <td>CG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CONGO, THE DEMOCRATIC REPUBLIC OF THE</td>
-                    <td>CD</td>
-                  </tr>
-                  <tr class="s">
-                    <td>COOK ISLANDS</td>
-                    <td>CK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>COSTA RICA</td>
-                    <td>CR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CÔTE D'IVOIRE</td>
-                    <td>CI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CROATIA</td>
-                    <td>HR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CUBA</td>
-                    <td>CU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CYPRUS</td>
-                    <td>CY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>CZECH REPUBLIC</td>
-                    <td>CZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>DENMARK</td>
-                    <td>DK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>DJIBOUTI</td>
-                    <td>DJ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>DOMINICA</td>
-                    <td>DM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>DOMINICAN REPUBLIC</td>
-                    <td>DO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ECUADOR</td>
-                    <td>EC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>EGYPT</td>
-                    <td>EG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>EL SALVADOR</td>
-                    <td>SV</td>
-                  </tr>
-                  <tr class="s">
-                    <td>EQUATORIAL GUINEA</td>
-                    <td>GQ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ERITREA</td>
-                    <td>ER</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ESTONIA</td>
-                    <td>EE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ETHIOPIA</td>
-                    <td>ET</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FALKLAND ISLANDS (MALVINAS)</td>
-                    <td>FK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FAROE ISLANDS</td>
-                    <td>FO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FIJI</td>
-                    <td>FJ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FINLAND</td>
-                    <td>FI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FRANCE</td>
-                    <td>FR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FRENCH GUIANA</td>
-                    <td>GF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FRENCH POLYNESIA</td>
-                    <td>PF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>FRENCH SOUTHERN TERRITORIES</td>
-                    <td>TF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GABON</td>
-                    <td>GA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GAMBIA</td>
-                    <td>GM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GEORGIA</td>
-                    <td>GE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GERMANY</td>
-                    <td>DE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GHANA</td>
-                    <td>GH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GIBRALTAR</td>
-                    <td>GI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GREECE</td>
-                    <td>GR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GREENLAND</td>
-                    <td>GL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GRENADA</td>
-                    <td>GD</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GUADELOUPE</td>
-                    <td>GP</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GUAM</td>
-                    <td>GU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GUATEMALA</td>
-                    <td>GT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GUINEA</td>
-                    <td>GN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GUINEA-BISSAU</td>
-                    <td>GW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>GUYANA</td>
-                    <td>GY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>HAITI</td>
-                    <td>HT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>HEARD ISLAND AND MCDONALD ISLANDS</td>
-                    <td>HM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>HONDURAS</td>
-                    <td>HN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>HONG KONG</td>
-                    <td>HK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>HUNGARY</td>
-                    <td>HU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ICELAND</td>
-                    <td>IS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>INDIA</td>
-                    <td>IN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>INDONESIA</td>
-                    <td>ID</td>
-                  </tr>
-                  <tr class="s">
-                    <td>IRAN, ISLAMIC REPUBLIC OF</td>
-                    <td>IR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>IRAQ</td>
-                    <td>IQ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>IRELAND</td>
-                    <td>IE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ISRAEL</td>
-                    <td>IL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ITALY</td>
-                    <td>IT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>JAMAICA</td>
-                    <td>JM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>JAPAN</td>
-                    <td>JP</td>
-                  </tr>
-                  <tr class="s">
-                    <td>JORDAN</td>
-                    <td>JO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>KAZAKHSTAN</td>
-                    <td>KZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>KENYA</td>
-                    <td>KE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>KIRIBATI</td>
-                    <td>KI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</td>
-                    <td>KP</td>
-                  </tr>
-                  <tr class="s">
-                    <td>KOREA, REPUBLIC OF</td>
-                    <td>KR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>KUWAIT</td>
-                    <td>KW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>KYRGYZSTAN</td>
-                    <td>KG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LAO PEOPLE'S DEMOCRATIC REPUBLIC(LAOS)</td>
-                    <td>LA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LATVIA</td>
-                    <td>LV</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LEBANON</td>
-                    <td>LB</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LESOTHO</td>
-                    <td>LS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LIBERIA</td>
-                    <td>LR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LIBYA, STATE OF</td>
-                    <td>LY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LIECHTENSTEIN</td>
-                    <td>LI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LITHUANIA</td>
-                    <td>LT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>LUXEMBOURG</td>
-                    <td>LU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MACAO</td>
-                    <td>MO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF</td>
-                    <td>MK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MADAGASCAR</td>
-                    <td>MG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MALAWI</td>
-                    <td>MW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MALAYSIA</td>
-                    <td>MY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MALDIVES</td>
-                    <td>MV</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MALI</td>
-                    <td>ML</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MALTA</td>
-                    <td>MT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MARSHALL ISLANDS</td>
-                    <td>MH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MARTINIQUE</td>
-                    <td>MQ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MAURITANIA</td>
-                    <td>MR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MAURITIUS</td>
-                    <td>MU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MAYOTTE</td>
-                    <td>YT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MEXICO</td>
-                    <td>MX</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MICRONESIA, FEDERATED STATES OF</td>
-                    <td>FM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MOLDOVA, REPUBLIC OF</td>
-                    <td>MD</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MONACO</td>
-                    <td>MC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MONGOLIA</td>
-                    <td>MN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MONTENEGRO</td>
-                    <td>ME</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MONTSERRAT</td>
-                    <td>MS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MOROCCO</td>
-                    <td>MA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MOZAMBIQUE</td>
-                    <td>MZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>MYANMAR</td>
-                    <td>MM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NAMIBIA</td>
-                    <td>NA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NAURU</td>
-                    <td>NR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NEPAL, FEDERAL DEMOCRATIC REPUBLIC OF</td>
-                    <td>NP</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NETHERLANDS</td>
-                    <td>NL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NETHERLANDS ANTILLES</td>
-                    <td>AN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NEW CALEDONIA</td>
-                    <td>NC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NEW ZEALAND</td>
-                    <td>NZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NICARAGUA</td>
-                    <td>NI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NIGER</td>
-                    <td>NE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NIGERIA</td>
-                    <td>NG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NIUE</td>
-                    <td>NU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NORFOLK ISLAND</td>
-                    <td>NF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NORTHERN MARIANA ISLANDS</td>
-                    <td>MP</td>
-                  </tr>
-                  <tr class="s">
-                    <td>NORWAY</td>
-                    <td>NO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>OMAN</td>
-                    <td>OM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PAKISTAN</td>
-                    <td>PK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PALAU</td>
-                    <td>PW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PALESTINE, STATE OF</td>
-                    <td>PS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PANAMA</td>
-                    <td>PA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PAPUA NEW GUINEA</td>
-                    <td>PG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PARAGUAY</td>
-                    <td>PY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PERU</td>
-                    <td>PE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PHILIPPINES</td>
-                    <td>PH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PITCAIRN</td>
-                    <td>PN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>POLAND</td>
-                    <td>PL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PORTUGAL</td>
-                    <td>PT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>PUERTO RICO</td>
-                    <td>PR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>QATAR</td>
-                    <td>QA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>RÉUNION</td>
-                    <td>RE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ROMANIA</td>
-                    <td>RO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>RUSSIAN FEDERATION</td>
-                    <td>RU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>RWANDA</td>
-                    <td>RW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAINT HELENA</td>
-                    <td>SH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAINT KITTS AND NEVIS</td>
-                    <td>KN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAINT LUCIA</td>
-                    <td>LC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAINT PIERRE AND MIQUELON</td>
-                    <td>PM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAINT VINCENT AND THE GRENADINES</td>
-                    <td>VC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAMOA</td>
-                    <td>WS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAN MARINO</td>
-                    <td>SM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAO TOME AND PRINCIPE</td>
-                    <td>ST</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SAUDI ARABIA</td>
-                    <td>SA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SENEGAL</td>
-                    <td>SN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SERBIA</td>
-                    <td>RS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SEYCHELLES</td>
-                    <td>SC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SIERRA LEONE</td>
-                    <td>SL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SINGAPORE</td>
-                    <td>SG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SLOVAKIA</td>
-                    <td>SK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SLOVENIA</td>
-                    <td>SI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SOLOMON ISLANDS</td>
-                    <td>SB</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SOMALIA</td>
-                    <td>SO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SOUTH AFRICA</td>
-                    <td>ZA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</td>
-                    <td>GS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SOUTH SUDAN</td>
-                    <td>SS</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SPAIN</td>
-                    <td>ES</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SRI LANKA</td>
-                    <td>LK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SUDAN</td>
-                    <td>SD</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SURINAME</td>
-                    <td>SR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SVALBARD AND JAN MAYEN</td>
-                    <td>SJ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SWAZILAND</td>
-                    <td>SZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SWEDEN</td>
-                    <td>SE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SWITZERLAND</td>
-                    <td>CH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>SYRIAN ARAB REPUBLIC</td>
-                    <td>SY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TAIWAN</td>
-                    <td>TW</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TAJIKISTAN</td>
-                    <td>TJ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TANZANIA, UNITED REPUBLIC OF</td>
-                    <td>TZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>THAILAND</td>
-                    <td>TH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TIMOR-LESTE</td>
-                    <td>TL</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TOGO</td>
-                    <td>TG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TOKELAU</td>
-                    <td>TK</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TONGA</td>
-                    <td>TO</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TRINIDAD AND TOBAGO</td>
-                    <td>TT</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TUNISIA</td>
-                    <td>TN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TURKEY</td>
-                    <td>TR</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TURKMENISTAN</td>
-                    <td>TM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TURKS AND CAICOS ISLANDS</td>
-                    <td>TC</td>
-                  </tr>
-                  <tr class="s">
-                    <td>TUVALU</td>
-                    <td>TV</td>
-                  </tr>
-                  <tr class="s">
-                    <td>UGANDA</td>
-                    <td>UG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>UKRAINE</td>
-                    <td>UA</td>
-                  </tr>
-                  <tr class="s">
-                    <td>UNITED ARAB EMIRATES</td>
-                    <td>AE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>UNITED KINGDOM</td>
-                    <td>GB</td>
-                  </tr>
-                  <tr class="s">
-                    <td>UNITED STATES</td>
-                    <td>US</td>
-                  </tr>
-                  <tr class="s">
-                    <td>UNITED STATES MINOR OUTLYING ISLANDS</td>
-                    <td>UM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>URUGUAY</td>
-                    <td>UY</td>
-                  </tr>
-                  <tr class="s">
-                    <td>UZBEKISTAN</td>
-                    <td>UZ</td>
-                  </tr>
-                  <tr class="s">
-                    <td>VANUATU</td>
-                    <td>VU</td>
-                  </tr>
-                  <tr class="s">
-                    <td>VENEZUELA</td>
-                    <td>VE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>VIET NAM</td>
-                    <td>VN</td>
-                  </tr>
-                  <tr class="s">
-                    <td>VIRGIN ISLANDS, BRITISH</td>
-                    <td>VG</td>
-                  </tr>
-                  <tr class="s">
-                    <td>VIRGIN ISLANDS, U.S.</td>
-                    <td>VI</td>
-                  </tr>
-                  <tr class="s">
-                    <td>WALLIS AND FUTUNA</td>
-                    <td>WF</td>
-                  </tr>
-                  <tr class="s">
-                    <td>WESTERN SAHARA</td>
-                    <td>EH</td>
-                  </tr>
-                  <tr class="s">
-                    <td>YEMEN</td>
-                    <td>YE</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ZAMBIA</td>
-                    <td>ZM</td>
-                  </tr>
-                  <tr class="s">
-                    <td>ZIMBABWE</td>
-                    <td>ZW</td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+      </div>
 
-        <small class="d-block text-center mt-3">
-            <nav id="pagination"></nav>
-          </small>
-      </main>
+      <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <table id="data-table1" class="table">
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>ISO Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AFGHANISTAN</td>
+              <td>AF</td>
+            </tr>
+            <tr>
+              <td>ALBANIA</td>
+              <td>AL</td>
+            </tr>
+            <tr>
+              <td>ALGERIA</td>
+              <td>DZ</td>
+            </tr>
+            <tr>
+              <td>AMERICAN SAMOA</td>
+              <td>AS</td>
+            </tr>
+            <tr>
+              <td>ANDORRA</td>
+              <td>AD</td>
+            </tr>
+            <tr>
+              <td>ANGOLA</td>
+              <td>AO</td>
+            </tr>
+            <tr>
+              <td>ANTARCTICA</td>
+              <td>AQ</td>
+            </tr>
+            <tr>
+              <td>ANTIGUA AND BARBUDA</td>
+              <td>AG</td>
+            </tr>
+            <tr>
+              <td>ARGENTINA</td>
+              <td>AR</td>
+            </tr>
+            <tr>
+              <td>ARMENIA</td>
+              <td>AM</td>
+            </tr>
+            <tr>
+              <td>ARUBA</td>
+              <td>AW</td>
+            </tr>
+            <tr>
+              <td>AUSTRALIA</td>
+              <td>AU</td>
+            </tr>
+            <tr>
+              <td>AUSTRIA</td>
+              <td>AT</td>
+            </tr>
+            <tr>
+              <td>AZERBAIJAN</td>
+              <td>AZ</td>
+            </tr>
+            <tr>
+              <td>BAHAMAS</td>
+              <td>BS</td>
+            </tr>
+            <tr>
+              <td>BAHRAIN</td>
+              <td>BH</td>
+            </tr>
+            <tr>
+              <td>BANGLADESH</td>
+              <td>BD</td>
+            </tr>
+            <tr>
+              <td>BARBADOS</td>
+              <td>BB</td>
+            </tr>
+            <tr>
+              <td>BELARUS</td>
+              <td>BY</td>
+            </tr>
+            <tr>
+              <td>BELGIUM</td>
+              <td>BE</td>
+            </tr>
+            <tr>
+              <td>BELIZE</td>
+              <td>BZ</td>
+            </tr>
+            <tr>
+              <td>BENIN</td>
+              <td>BJ</td>
+            </tr>
+            <tr>
+              <td>BERMUDA</td>
+              <td>BM</td>
+            </tr>
+            <tr>
+              <td>BHUTAN</td>
+              <td>BT</td>
+            </tr>
+            <tr>
+              <td>BOLIVIA</td>
+              <td>BO</td>
+            </tr>
+            <tr>
+              <td>BOSNIA AND HERZEGOVINA</td>
+              <td>BA</td>
+            </tr>
+            <tr>
+              <td>BOTSWANA</td>
+              <td>BW</td>
+            </tr>
+            <tr>
+              <td>BOUVET ISLAND</td>
+              <td>BV</td>
+            </tr>
+            <tr>
+              <td>BRAZIL</td>
+              <td>BR</td>
+            </tr>
+            <tr>
+              <td>BRITISH INDIAN OCEAN TERRITORY</td>
+              <td>IO</td>
+            </tr>
+            <tr>
+              <td>BRUNEI DARUSSALAM</td>
+              <td>BN</td>
+            </tr>
+            <tr>
+              <td>BULGARIA</td>
+              <td>BG</td>
+            </tr>
+            <tr>
+              <td>BURKINA FASO</td>
+              <td>BF</td>
+            </tr>
+            <tr>
+              <td>BURUNDI</td>
+              <td>BI</td>
+            </tr>
+            <tr>
+              <td>CAMBODIA</td>
+              <td>KH</td>
+            </tr>
+            <tr>
+              <td>CAMEROON</td>
+              <td>CM</td>
+            </tr>
+            <tr>
+              <td>CANADA</td>
+              <td>CA</td>
+            </tr>
+            <tr>
+              <td>CAPE VERDE</td>
+              <td>CV</td>
+            </tr>
+            <tr>
+              <td>CAYMAN ISLANDS</td>
+              <td>KY</td>
+            </tr>
+            <tr>
+              <td>CENTRAL AFRICAN REPUBLIC</td>
+              <td>CF</td>
+            </tr>
+            <tr>
+              <td>CHAD</td>
+              <td>TD</td>
+            </tr>
+            <tr>
+              <td>CHILE</td>
+              <td>CL</td>
+            </tr>
+            <tr>
+              <td>CHINA</td>
+              <td>CN</td>
+            </tr>
+            <tr>
+              <td>CHRISTMAS ISLAND</td>
+              <td>CX</td>
+            </tr>
+            <tr>
+              <td>COCOS (KEELING) ISLANDS</td>
+              <td>CC</td>
+            </tr>
+            <tr>
+              <td>COLOMBIA</td>
+              <td>CO</td>
+            </tr>
+            <tr>
+              <td>COMOROS</td>
+              <td>KM</td>
+            </tr>
+            <tr>
+              <td>CONGO</td>
+              <td>CG</td>
+            </tr>
+            <tr>
+              <td>CONGO, THE DEMOCRATIC REPUBLIC OF THE</td>
+              <td>CD</td>
+            </tr>
+            <tr>
+              <td>COOK ISLANDS</td>
+              <td>CK</td>
+            </tr>
+            <tr>
+              <td>COSTA RICA</td>
+              <td>CR</td>
+            </tr>
+            <tr>
+              <td>CÔTE D'IVOIRE</td>
+              <td>CI</td>
+            </tr>
+            <tr>
+              <td>CROATIA</td>
+              <td>HR</td>
+            </tr>
+            <tr>
+              <td>CUBA</td>
+              <td>CU</td>
+            </tr>
+            <tr>
+              <td>CYPRUS</td>
+              <td>CY</td>
+            </tr>
+            <tr>
+              <td>CZECH REPUBLIC</td>
+              <td>CZ</td>
+            </tr>
+            <tr>
+              <td>DENMARK</td>
+              <td>DK</td>
+            </tr>
+            <tr>
+              <td>DJIBOUTI</td>
+              <td>DJ</td>
+            </tr>
+            <tr>
+              <td>DOMINICA</td>
+              <td>DM</td>
+            </tr>
+            <tr>
+              <td>DOMINICAN REPUBLIC</td>
+              <td>DO</td>
+            </tr>
+            <tr>
+              <td>ECUADOR</td>
+              <td>EC</td>
+            </tr>
+            <tr>
+              <td>EGYPT</td>
+              <td>EG</td>
+            </tr>
+            <tr>
+              <td>EL SALVADOR</td>
+              <td>SV</td>
+            </tr>
+            <tr>
+              <td>EQUATORIAL GUINEA</td>
+              <td>GQ</td>
+            </tr>
+            <tr>
+              <td>ERITREA</td>
+              <td>ER</td>
+            </tr>
+            <tr>
+              <td>ESTONIA</td>
+              <td>EE</td>
+            </tr>
+            <tr>
+              <td>ETHIOPIA</td>
+              <td>ET</td>
+            </tr>
+            <tr>
+              <td>FALKLAND ISLANDS (MALVINAS)</td>
+              <td>FK</td>
+            </tr>
+            <tr>
+              <td>FAROE ISLANDS</td>
+              <td>FO</td>
+            </tr>
+            <tr>
+              <td>FIJI</td>
+              <td>FJ</td>
+            </tr>
+            <tr>
+              <td>FINLAND</td>
+              <td>FI</td>
+            </tr>
+            <tr>
+              <td>FRANCE</td>
+              <td>FR</td>
+            </tr>
+            <tr>
+              <td>FRENCH GUIANA</td>
+              <td>GF</td>
+            </tr>
+            <tr>
+              <td>FRENCH POLYNESIA</td>
+              <td>PF</td>
+            </tr>
+            <tr>
+              <td>FRENCH SOUTHERN TERRITORIES</td>
+              <td>TF</td>
+            </tr>
+            <tr>
+              <td>GABON</td>
+              <td>GA</td>
+            </tr>
+            <tr>
+              <td>GAMBIA</td>
+              <td>GM</td>
+            </tr>
+            <tr>
+              <td>GEORGIA</td>
+              <td>GE</td>
+            </tr>
+            <tr>
+              <td>GERMANY</td>
+              <td>DE</td>
+            </tr>
+            <tr>
+              <td>GHANA</td>
+              <td>GH</td>
+            </tr>
+            <tr>
+              <td>GIBRALTAR</td>
+              <td>GI</td>
+            </tr>
+            <tr>
+              <td>GREECE</td>
+              <td>GR</td>
+            </tr>
+            <tr>
+              <td>GREENLAND</td>
+              <td>GL</td>
+            </tr>
+            <tr>
+              <td>GRENADA</td>
+              <td>GD</td>
+            </tr>
+            <tr>
+              <td>GUADELOUPE</td>
+              <td>GP</td>
+            </tr>
+            <tr>
+              <td>GUAM</td>
+              <td>GU</td>
+            </tr>
+            <tr>
+              <td>GUATEMALA</td>
+              <td>GT</td>
+            </tr>
+            <tr>
+              <td>GUINEA</td>
+              <td>GN</td>
+            </tr>
+            <tr>
+              <td>GUINEA-BISSAU</td>
+              <td>GW</td>
+            </tr>
+            <tr>
+              <td>GUYANA</td>
+              <td>GY</td>
+            </tr>
+            <tr>
+              <td>HAITI</td>
+              <td>HT</td>
+            </tr>
+            <tr>
+              <td>HEARD ISLAND AND MCDONALD ISLANDS</td>
+              <td>HM</td>
+            </tr>
+            <tr>
+              <td>HONDURAS</td>
+              <td>HN</td>
+            </tr>
+            <tr>
+              <td>HONG KONG</td>
+              <td>HK</td>
+            </tr>
+            <tr>
+              <td>HUNGARY</td>
+              <td>HU</td>
+            </tr>
+            <tr>
+              <td>ICELAND</td>
+              <td>IS</td>
+            </tr>
+            <tr>
+              <td>INDIA</td>
+              <td>IN</td>
+            </tr>
+            <tr>
+              <td>INDONESIA</td>
+              <td>ID</td>
+            </tr>
+            <tr>
+              <td>IRAN, ISLAMIC REPUBLIC OF</td>
+              <td>IR</td>
+            </tr>
+            <tr>
+              <td>IRAQ</td>
+              <td>IQ</td>
+            </tr>
+            <tr>
+              <td>IRELAND</td>
+              <td>IE</td>
+            </tr>
+            <tr>
+              <td>ISRAEL</td>
+              <td>IL</td>
+            </tr>
+            <tr>
+              <td>ITALY</td>
+              <td>IT</td>
+            </tr>
+            <tr>
+              <td>JAMAICA</td>
+              <td>JM</td>
+            </tr>
+            <tr>
+              <td>JAPAN</td>
+              <td>JP</td>
+            </tr>
+            <tr>
+              <td>JORDAN</td>
+              <td>JO</td>
+            </tr>
+            <tr>
+              <td>KAZAKHSTAN</td>
+              <td>KZ</td>
+            </tr>
+            <tr>
+              <td>KENYA</td>
+              <td>KE</td>
+            </tr>
+            <tr>
+              <td>KIRIBATI</td>
+              <td>KI</td>
+            </tr>
+            <tr>
+              <td>KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF</td>
+              <td>KP</td>
+            </tr>
+            <tr>
+              <td>KOREA, REPUBLIC OF</td>
+              <td>KR</td>
+            </tr>
+            <tr>
+              <td>KUWAIT</td>
+              <td>KW</td>
+            </tr>
+            <tr>
+              <td>KYRGYZSTAN</td>
+              <td>KG</td>
+            </tr>
+            <tr>
+              <td>LAO PEOPLE'S DEMOCRATIC REPUBLIC(LAOS)</td>
+              <td>LA</td>
+            </tr>
+            <tr>
+              <td>LATVIA</td>
+              <td>LV</td>
+            </tr>
+            <tr>
+              <td>LEBANON</td>
+              <td>LB</td>
+            </tr>
+            <tr>
+              <td>LESOTHO</td>
+              <td>LS</td>
+            </tr>
+            <tr>
+              <td>LIBERIA</td>
+              <td>LR</td>
+            </tr>
+            <tr>
+              <td>LIBYA, STATE OF</td>
+              <td>LY</td>
+            </tr>
+            <tr>
+              <td>LIECHTENSTEIN</td>
+              <td>LI</td>
+            </tr>
+            <tr>
+              <td>LITHUANIA</td>
+              <td>LT</td>
+            </tr>
+            <tr>
+              <td>LUXEMBOURG</td>
+              <td>LU</td>
+            </tr>
+            <tr>
+              <td>MACAO</td>
+              <td>MO</td>
+            </tr>
+            <tr>
+              <td>MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF</td>
+              <td>MK</td>
+            </tr>
+            <tr>
+              <td>MADAGASCAR</td>
+              <td>MG</td>
+            </tr>
+            <tr>
+              <td>MALAWI</td>
+              <td>MW</td>
+            </tr>
+            <tr>
+              <td>MALAYSIA</td>
+              <td>MY</td>
+            </tr>
+            <tr>
+              <td>MALDIVES</td>
+              <td>MV</td>
+            </tr>
+            <tr>
+              <td>MALI</td>
+              <td>ML</td>
+            </tr>
+            <tr>
+              <td>MALTA</td>
+              <td>MT</td>
+            </tr>
+            <tr>
+              <td>MARSHALL ISLANDS</td>
+              <td>MH</td>
+            </tr>
+            <tr>
+              <td>MARTINIQUE</td>
+              <td>MQ</td>
+            </tr>
+            <tr>
+              <td>MAURITANIA</td>
+              <td>MR</td>
+            </tr>
+            <tr>
+              <td>MAURITIUS</td>
+              <td>MU</td>
+            </tr>
+            <tr>
+              <td>MAYOTTE</td>
+              <td>YT</td>
+            </tr>
+            <tr>
+              <td>MEXICO</td>
+              <td>MX</td>
+            </tr>
+            <tr>
+              <td>MICRONESIA, FEDERATED STATES OF</td>
+              <td>FM</td>
+            </tr>
+            <tr>
+              <td>MOLDOVA, REPUBLIC OF</td>
+              <td>MD</td>
+            </tr>
+            <tr>
+              <td>MONACO</td>
+              <td>MC</td>
+            </tr>
+            <tr>
+              <td>MONGOLIA</td>
+              <td>MN</td>
+            </tr>
+            <tr>
+              <td>MONTENEGRO</td>
+              <td>ME</td>
+            </tr>
+            <tr>
+              <td>MONTSERRAT</td>
+              <td>MS</td>
+            </tr>
+            <tr>
+              <td>MOROCCO</td>
+              <td>MA</td>
+            </tr>
+            <tr>
+              <td>MOZAMBIQUE</td>
+              <td>MZ</td>
+            </tr>
+            <tr>
+              <td>MYANMAR</td>
+              <td>MM</td>
+            </tr>
+            <tr>
+              <td>NAMIBIA</td>
+              <td>NA</td>
+            </tr>
+            <tr>
+              <td>NAURU</td>
+              <td>NR</td>
+            </tr>
+            <tr>
+              <td>NEPAL, FEDERAL DEMOCRATIC REPUBLIC OF</td>
+              <td>NP</td>
+            </tr>
+            <tr>
+              <td>NETHERLANDS</td>
+              <td>NL</td>
+            </tr>
+            <tr>
+              <td>NETHERLANDS ANTILLES</td>
+              <td>AN</td>
+            </tr>
+            <tr>
+              <td>NEW CALEDONIA</td>
+              <td>NC</td>
+            </tr>
+            <tr>
+              <td>NEW ZEALAND</td>
+              <td>NZ</td>
+            </tr>
+            <tr>
+              <td>NICARAGUA</td>
+              <td>NI</td>
+            </tr>
+            <tr>
+              <td>NIGER</td>
+              <td>NE</td>
+            </tr>
+            <tr>
+              <td>NIGERIA</td>
+              <td>NG</td>
+            </tr>
+            <tr>
+              <td>NIUE</td>
+              <td>NU</td>
+            </tr>
+            <tr>
+              <td>NORFOLK ISLAND</td>
+              <td>NF</td>
+            </tr>
+            <tr>
+              <td>NORTHERN MARIANA ISLANDS</td>
+              <td>MP</td>
+            </tr>
+            <tr>
+              <td>NORWAY</td>
+              <td>NO</td>
+            </tr>
+            <tr>
+              <td>OMAN</td>
+              <td>OM</td>
+            </tr>
+            <tr>
+              <td>PAKISTAN</td>
+              <td>PK</td>
+            </tr>
+            <tr>
+              <td>PALAU</td>
+              <td>PW</td>
+            </tr>
+            <tr>
+              <td>PALESTINE, STATE OF</td>
+              <td>PS</td>
+            </tr>
+            <tr>
+              <td>PANAMA</td>
+              <td>PA</td>
+            </tr>
+            <tr>
+              <td>PAPUA NEW GUINEA</td>
+              <td>PG</td>
+            </tr>
+            <tr>
+              <td>PARAGUAY</td>
+              <td>PY</td>
+            </tr>
+            <tr>
+              <td>PERU</td>
+              <td>PE</td>
+            </tr>
+            <tr>
+              <td>PHILIPPINES</td>
+              <td>PH</td>
+            </tr>
+            <tr>
+              <td>PITCAIRN</td>
+              <td>PN</td>
+            </tr>
+            <tr>
+              <td>POLAND</td>
+              <td>PL</td>
+            </tr>
+            <tr>
+              <td>PORTUGAL</td>
+              <td>PT</td>
+            </tr>
+            <tr>
+              <td>PUERTO RICO</td>
+              <td>PR</td>
+            </tr>
+            <tr>
+              <td>QATAR</td>
+              <td>QA</td>
+            </tr>
+            <tr>
+              <td>RÉUNION</td>
+              <td>RE</td>
+            </tr>
+            <tr>
+              <td>ROMANIA</td>
+              <td>RO</td>
+            </tr>
+            <tr>
+              <td>RUSSIAN FEDERATION</td>
+              <td>RU</td>
+            </tr>
+            <tr>
+              <td>RWANDA</td>
+              <td>RW</td>
+            </tr>
+            <tr>
+              <td>SAINT HELENA</td>
+              <td>SH</td>
+            </tr>
+            <tr>
+              <td>SAINT KITTS AND NEVIS</td>
+              <td>KN</td>
+            </tr>
+            <tr>
+              <td>SAINT LUCIA</td>
+              <td>LC</td>
+            </tr>
+            <tr>
+              <td>SAINT PIERRE AND MIQUELON</td>
+              <td>PM</td>
+            </tr>
+            <tr>
+              <td>SAINT VINCENT AND THE GRENADINES</td>
+              <td>VC</td>
+            </tr>
+            <tr>
+              <td>SAMOA</td>
+              <td>WS</td>
+            </tr>
+            <tr>
+              <td>SAN MARINO</td>
+              <td>SM</td>
+            </tr>
+            <tr>
+              <td>SAO TOME AND PRINCIPE</td>
+              <td>ST</td>
+            </tr>
+            <tr>
+              <td>SAUDI ARABIA</td>
+              <td>SA</td>
+            </tr>
+            <tr>
+              <td>SENEGAL</td>
+              <td>SN</td>
+            </tr>
+            <tr>
+              <td>SERBIA</td>
+              <td>RS</td>
+            </tr>
+            <tr>
+              <td>SEYCHELLES</td>
+              <td>SC</td>
+            </tr>
+            <tr>
+              <td>SIERRA LEONE</td>
+              <td>SL</td>
+            </tr>
+            <tr>
+              <td>SINGAPORE</td>
+              <td>SG</td>
+            </tr>
+            <tr>
+              <td>SLOVAKIA</td>
+              <td>SK</td>
+            </tr>
+            <tr>
+              <td>SLOVENIA</td>
+              <td>SI</td>
+            </tr>
+            <tr>
+              <td>SOLOMON ISLANDS</td>
+              <td>SB</td>
+            </tr>
+            <tr>
+              <td>SOMALIA</td>
+              <td>SO</td>
+            </tr>
+            <tr>
+              <td>SOUTH AFRICA</td>
+              <td>ZA</td>
+            </tr>
+            <tr>
+              <td>SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</td>
+              <td>GS</td>
+            </tr>
+            <tr>
+              <td>SOUTH SUDAN</td>
+              <td>SS</td>
+            </tr>
+            <tr>
+              <td>SPAIN</td>
+              <td>ES</td>
+            </tr>
+            <tr>
+              <td>SRI LANKA</td>
+              <td>LK</td>
+            </tr>
+            <tr>
+              <td>SUDAN</td>
+              <td>SD</td>
+            </tr>
+            <tr>
+              <td>SURINAME</td>
+              <td>SR</td>
+            </tr>
+            <tr>
+              <td>SVALBARD AND JAN MAYEN</td>
+              <td>SJ</td>
+            </tr>
+            <tr>
+              <td>SWAZILAND</td>
+              <td>SZ</td>
+            </tr>
+            <tr>
+              <td>SWEDEN</td>
+              <td>SE</td>
+            </tr>
+            <tr>
+              <td>SWITZERLAND</td>
+              <td>CH</td>
+            </tr>
+            <tr>
+              <td>SYRIAN ARAB REPUBLIC</td>
+              <td>SY</td>
+            </tr>
+            <tr>
+              <td>TAIWAN</td>
+              <td>TW</td>
+            </tr>
+            <tr>
+              <td>TAJIKISTAN</td>
+              <td>TJ</td>
+            </tr>
+            <tr>
+              <td>TANZANIA, UNITED REPUBLIC OF</td>
+              <td>TZ</td>
+            </tr>
+            <tr>
+              <td>THAILAND</td>
+              <td>TH</td>
+            </tr>
+            <tr>
+              <td>TIMOR-LESTE</td>
+              <td>TL</td>
+            </tr>
+            <tr>
+              <td>TOGO</td>
+              <td>TG</td>
+            </tr>
+            <tr>
+              <td>TOKELAU</td>
+              <td>TK</td>
+            </tr>
+            <tr>
+              <td>TONGA</td>
+              <td>TO</td>
+            </tr>
+            <tr>
+              <td>TRINIDAD AND TOBAGO</td>
+              <td>TT</td>
+            </tr>
+            <tr>
+              <td>TUNISIA</td>
+              <td>TN</td>
+            </tr>
+            <tr>
+              <td>TURKEY</td>
+              <td>TR</td>
+            </tr>
+            <tr>
+              <td>TURKMENISTAN</td>
+              <td>TM</td>
+            </tr>
+            <tr>
+              <td>TURKS AND CAICOS ISLANDS</td>
+              <td>TC</td>
+            </tr>
+            <tr>
+              <td>TUVALU</td>
+              <td>TV</td>
+            </tr>
+            <tr>
+              <td>UGANDA</td>
+              <td>UG</td>
+            </tr>
+            <tr>
+              <td>UKRAINE</td>
+              <td>UA</td>
+            </tr>
+            <tr>
+              <td>UNITED ARAB EMIRATES</td>
+              <td>AE</td>
+            </tr>
+            <tr>
+              <td>UNITED KINGDOM</td>
+              <td>GB</td>
+            </tr>
+            <tr>
+              <td>UNITED STATES</td>
+              <td>US</td>
+            </tr>
+            <tr>
+              <td>UNITED STATES MINOR OUTLYING ISLANDS</td>
+              <td>UM</td>
+            </tr>
+            <tr>
+              <td>URUGUAY</td>
+              <td>UY</td>
+            </tr>
+            <tr>
+              <td>UZBEKISTAN</td>
+              <td>UZ</td>
+            </tr>
+            <tr>
+              <td>VANUATU</td>
+              <td>VU</td>
+            </tr>
+            <tr>
+              <td>VENEZUELA</td>
+              <td>VE</td>
+            </tr>
+            <tr>
+              <td>VIET NAM</td>
+              <td>VN</td>
+            </tr>
+            <tr>
+              <td>VIRGIN ISLANDS, BRITISH</td>
+              <td>VG</td>
+            </tr>
+            <tr>
+              <td>VIRGIN ISLANDS, U.S.</td>
+              <td>VI</td>
+            </tr>
+            <tr>
+              <td>WALLIS AND FUTUNA</td>
+              <td>WF</td>
+            </tr>
+            <tr>
+              <td>WESTERN SAHARA</td>
+              <td>EH</td>
+            </tr>
+            <tr>
+              <td>YEMEN</td>
+              <td>YE</td>
+            </tr>
+            <tr>
+              <td>ZAMBIA</td>
+              <td>ZM</td>
+            </tr>
+            <tr>
+              <td>ZIMBABWE</td>
+              <td>ZW</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
+      <small class="d-block text-center mt-3">
+        <nav id="pagination"></nav>
+      </small>
+    </main>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script
@@ -1015,5 +1022,14 @@
       crossorigin="anonymous"
     ></script>
     <script src="./datatable.js"></script>
+
+    <script>
+      //call paging onload
+      Netkathir.start({
+        tableId: "#data-table1",
+        getPageSizeFrom: "#pagesize",
+        paginationContainer: "#pagination"
+      });
+    </script>
   </body>
 </html>
