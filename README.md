@@ -45,6 +45,3 @@ Convert existing table to paginated table, boostrap based style
 
 # License
 data-table is opensource software licensed under the <a href="https://opensource.org/licenses/MIT">MIT</a> license.
-
- ** @author gunabalans@gmail.com ** 
- ** @site https://www.netkathir.com **
