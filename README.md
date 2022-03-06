@@ -28,9 +28,6 @@ Best suitable for server rendered html table.
  ``` 
     Call paging onload (default values - you can change)
       
-       tableId: "#data-table1",
-       getPageSizeFrom: "#pagesize",
-       paginationContainer: "#pagination"  
    ```HTML
     <script>
       Netkathir.start({
