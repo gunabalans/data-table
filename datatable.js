@@ -40,11 +40,24 @@ const Netkathir = {
     tableId: "#data-table",
     getPageSizeFrom: "#pagesize",
     paginationContainer: "#pagination",
+    pagingButtonForground: "btn-light",
+    pagingButtonActive: "bg-primary",
 
     start: function (params) {
-        this.getPageSizeFrom = params.getPageSizeFrom;
-        this.tableId = params.tableId;
-        this.paginationContainer = params.paginationContainer;
+
+        if (params.getPageSizeFrom) {
+            this.getPageSizeFrom = params.getPageSizeFrom;
+        }
+
+        if (this.tableId) {
+            this.tableId = params.tableId;
+        }
+
+        if (this.paginationContainer) {
+            this.paginationContainer = params.paginationContainer;
+        }
+
+
         this.init();
         this.paging();
     },
@@ -55,6 +68,7 @@ const Netkathir = {
         for (const tr of trs) {
             tr.setAttribute('class', 's');
         }
+        trs = null;
     },
     ft: function (t, j) {
 
@@ -77,6 +91,8 @@ const Netkathir = {
                 }
             }
         }
+
+        trs = null;
         //call paging after filter
         this.paging();
     },
@@ -120,14 +136,42 @@ const Netkathir = {
 
         trs = null; //remove trs
         if (event != null) {
-            var pr = event.target.parentElement;
-            for (const li of pr.parentElement.querySelectorAll("li.active")) {
-                li.classList.remove("active");
+            var pr = event.target;
+            const searchFor = "button." + this.pagingButtonActive;
+            for (const li of pr.parentElement.parentElement.querySelectorAll(searchFor)) {
+                li.classList.remove(this.pagingButtonActive);
             }
-            pr.classList.add("active");
+            pr.classList.add(this.pagingButtonActive);
             pr = null;
         }
 
+    },
+    buttonGroup: function (pagesize, whereToStart = 1, length = 5, labelled = false, label = "Prev") {
+
+        var div = document.createElement('div');
+        div.setAttribute("class", "btn-group btn-group-lg");
+        div.setAttribute("role", "group");
+        var i = j = whereToStart;
+
+        for (j; j < (whereToStart + length);) {
+            var button = document.createElement('button');
+            button.setAttribute("type", "button");
+            button.setAttribute("class", "btn btn-light");
+            button.setAttribute("id", i);
+            if (labelled) {
+                button.innerText = label;
+            } else {
+                button.setAttribute("onclick", "Netkathir.filterTable(" + i + "," + pagesize + ",event)");
+                button.innerText = j;
+            }
+
+
+            div.appendChild(button);
+            i = i + pagesize;
+            j++;
+            button = null;
+        }
+        return div;
     },
     paging: function () {
         var pagesize = document.querySelector(this.getPageSizeFrom).value;
@@ -138,33 +182,37 @@ const Netkathir = {
 
         pagesize = parseInt(pagesize);
 
-        var trs = document.querySelectorAll(this.tableId + " tr.s");
-        var totalRow = trs.length; //remove header count
+        var totalRow = document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
+        var starting = 1;
+        var lengthOf = 5; //botton on each side
 
-        var listView = document.createElement('ul');
-        listView.setAttribute("class", "pagination");
+        var prev = this.buttonGroup(pagesize, 1, 1, true, "Prev");
+        var next = this.buttonGroup(pagesize, 1, 1, true, "Next");
 
-        var j = 1;
-        for (var i = 0; i < totalRow;) {
-            var listViewItem = document.createElement('li');
-            listViewItem.setAttribute("class", "page-item");
-            var button = document.createElement('a');
-            button.setAttribute("class", "page-link");
-            button.setAttribute("id", i);
+        var startingGroup = this.buttonGroup(pagesize, starting, lengthOf);
+        var midGroup = this.buttonGroup(pagesize, 1, 3, true, ".");
+        var closingGroup = this.buttonGroup(pagesize, (totalRow - (lengthOf * pagesize)), lengthOf);
 
-            button.setAttribute("onclick", "Netkathir.filterTable(" + i + "," + pagesize + ",event)");
-            button.innerHTML = j;
+        var div = document.createElement('div');
+        div.setAttribute("class", "btn-toolbar");
+        div.setAttribute("role", "toolbar");
+        div.appendChild(prev);
+        div.appendChild(startingGroup);
+        div.appendChild(midGroup);
+        div.appendChild(closingGroup);
+        div.appendChild(next);
 
-            listViewItem.appendChild(button);
-            listView.appendChild(listViewItem);
-            i = i + pagesize;
-            j++;
-        }
+        //list view
 
         let pagination = document.querySelector(this.paginationContainer);
         pagination.innerHTML = ''; //clear prev list view
-        pagination.appendChild(listView);
-        listView = null; // just dereferencing ul element
+        pagination.appendChild(div);
+        startingGroup = null;
+        midGroup = null;
+        closingGroup = null;
+        prev = null;
+        next = null;
+        div = null; // just dereferencing ul element
         //filter initially
         this.filterTable(0, pagesize)
     }
