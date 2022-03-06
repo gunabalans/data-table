@@ -1,7 +1,8 @@
 # data-table
 
 Convert existing table to paginated table, boostrap based style
- 
+
+Best suitable for server rendered html table.
 
  ## Netkathir data table 
   
