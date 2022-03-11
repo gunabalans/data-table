@@ -44,7 +44,11 @@ const Netkathir = {
     pagingButtonActive: "bg-primary",
 
     //pagination current page    
+    lengthOfPageGroup: 3,
     currentpage: 1,
+    startingPageNoG1: 1,
+    startingPageNoG2: 1,
+
 
     start: function (params) {
 
@@ -62,11 +66,25 @@ const Netkathir = {
 
 
         this.init();
+        this.initStartPageNoG2();//set the stating page of LAst part (G2) of pageination
         this.paging();
     },
     getPageSize: function () {
-        let ps = document.querySelector(this.getPageSizeFrom).value;
-        return parseInt(ps);
+        var ps = document.querySelector(this.getPageSizeFrom).value;
+        ps = parseInt(ps);
+        if (Number.isInteger(ps)) {
+            return ps;
+        }
+        return 0;
+    },
+    getTotalRows: function () {
+        return document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
+    },
+    initStartPageNoG2: function () {
+        const totalRow = this.getTotalRows();
+        const pagesize = this.getPageSize();
+        // (lengthOf - 1) to componsate last value and for loop < max value condition in pagination generation
+        this.startingPageNoG2 = Math.ceil(totalRow / pagesize) - (this.lengthOfPageGroup - 1);
     },
     init: function () {
         let trs = document.querySelectorAll(this.tableId + " tbody tr");
@@ -152,14 +170,37 @@ const Netkathir = {
             if (cp == "Prev") {
                 if (this.currentpage > 1) {
                     this.currentpage--;
+                    if (this.startingPageNoG2 >= (this.startingPageNoG1 + this.lengthOfPageGroup)) {
+                        this.startingPageNoG2--;
+                    }
+
+                    if (this.startingPageNoG1 > 1) {
+                        this.startingPageNoG1--;
+                    }
+
+                    this.paging();
                 }
             } else if (cp == "Next") {
                 const totalRow = document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
                 if (this.currentpage < totalRow / pagesize) {
                     this.currentpage++;
                 }
+
+                if (this.startingPageNoG2 <= (Math.ceil(totalRow / pagesize) - this.lengthOfPageGroup)) {
+                    this.startingPageNoG2++;
+                }
+
+                if ((this.startingPageNoG1 + this.lengthOfPageGroup) < this.startingPageNoG2) {
+                    this.startingPageNoG1++;
+                }
+
+
+                this.paging();
+
             } else {
-                this.currentpage = parseInt(cp);
+                if (Number.isInteger(parseInt(cp))) {
+                    this.currentpage = parseInt(cp);
+                }
             }
 
 
@@ -173,10 +214,13 @@ const Netkathir = {
             for (const li of t.parentElement.parentElement.querySelectorAll(searchFor)) {
                 li.classList.remove(this.pagingButtonActive);
             }
-            t.classList.add(this.pagingButtonActive);
+
+            if (Number.isInteger(parseInt(cp))) {
+                t.classList.add(this.pagingButtonActive);
+            }
         }
     },
-    
+
     buttonGroup: function (pagesize, whereToStart = 1, length = 5, labelled = false, label = "Prev") {
 
         var div = document.createElement('div');
@@ -208,29 +252,18 @@ const Netkathir = {
         return div;
     },
     paging: function () {
-        var pagesize = document.querySelector(this.getPageSizeFrom).value;
-
-
-        if (isNaN(pagesize)) {
-            pagesize = 0;
-        }
-
-        pagesize = parseInt(pagesize);
+        var pagesize = this.getPageSize();
 
         const lengthOf = 3; //botton on each side
         const totalRow = document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
-
-        // (lengthOf - 1) to componsate last value and for loop < max value condition in pagination generation
-        const starting2 = Math.ceil(totalRow / pagesize) - (lengthOf - 1);
-        const starting = 1;
 
 
         let prev = this.buttonGroup(pagesize, 1, 1, true, "Prev");
         let next = this.buttonGroup(pagesize, 1, 1, true, "Next");
 
-        let startingGroup = this.buttonGroup(pagesize, starting, lengthOf);
+        let startingGroup = this.buttonGroup(pagesize, this.startingPageNoG1, lengthOf);
         let spacer1 = this.buttonGroup(pagesize, 1, 3, true, ".");
-        let closingGroup = this.buttonGroup(pagesize, starting2, lengthOf);
+        let closingGroup = this.buttonGroup(pagesize, this.startingPageNoG2, lengthOf);
 
         let div = document.createElement('div');
         div.setAttribute("class", "btn-toolbar");
@@ -257,156 +290,3 @@ const Netkathir = {
     },
 
 };
-
-
-/* * * * * * * * * * * * * * * * *
- * Pagination
- * javascript page navigation
- * @author Dmitriy Karpov
- * https://codepen.io/karpovsystems
- * * * * * * * * * * * * * * * * */
-
-var Pagination = {
-
-    code: '',
-
-    // --------------------
-    // Utility
-    // --------------------
-
-    // converting initialize data
-    Extend: function (data) {
-        data = data || {};
-        Pagination.size = data.size || 300;
-        Pagination.page = data.page || 1;
-        Pagination.step = data.step || 3;
-    },
-
-    // add pages by number (from [s] to [f])
-    Add: function (s, f) {
-        for (var i = s; i < f; i++) {
-            Pagination.code += '<a>' + i + '</a>';
-        }
-    },
-
-    // add last page with separator
-    Last: function () {
-        Pagination.code += '<i>...</i><a>' + Pagination.size + '</a>';
-    },
-
-    // add first page with separator
-    First: function () {
-        Pagination.code += '<a>1</a><i>...</i>';
-    },
-
-
-
-    // --------------------
-    // Handlers
-    // --------------------
-
-    // change page
-    Click: function () {
-        Pagination.page = +this.innerHTML;
-        Pagination.Start();
-    },
-
-    // previous page
-    Prev: function () {
-        Pagination.page--;
-        if (Pagination.page < 1) {
-            Pagination.page = 1;
-        }
-        Pagination.Start();
-    },
-
-    // next page
-    Next: function () {
-        Pagination.page++;
-        if (Pagination.page > Pagination.size) {
-            Pagination.page = Pagination.size;
-        }
-        Pagination.Start();
-    },
-
-
-
-    // --------------------
-    // Script
-    // --------------------
-
-    // binding pages
-    Bind: function () {
-        var a = Pagination.e.getElementsByTagName('a');
-        for (var i = 0; i < a.length; i++) {
-            if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
-            a[i].addEventListener('click', Pagination.Click, false);
-        }
-    },
-
-    // write pagination
-    Finish: function () {
-        Pagination.e.innerHTML = Pagination.code;
-        Pagination.code = '';
-        Pagination.Bind();
-    },
-
-    // find pagination type
-    Start: function () {
-        if (Pagination.size < Pagination.step * 2 + 6) {
-            Pagination.Add(1, Pagination.size + 1);
-        }
-        else if (Pagination.page < Pagination.step * 2 + 1) {
-            Pagination.Add(1, Pagination.step * 2 + 4);
-            Pagination.Last();
-        }
-        else if (Pagination.page > Pagination.size - Pagination.step * 2) {
-            Pagination.First();
-            Pagination.Add(Pagination.size - Pagination.step * 2 - 2, Pagination.size + 1);
-        }
-        else {
-            Pagination.First();
-            Pagination.Add(Pagination.page - Pagination.step, Pagination.page + Pagination.step + 1);
-            Pagination.Last();
-        }
-        Pagination.Finish();
-    },
-
-
-
-    // --------------------
-    // Initialization
-    // --------------------
-
-    // binding buttons
-    Buttons: function (e) {
-        var nav = e.getElementsByTagName('a');
-        nav[0].addEventListener('click', Pagination.Prev, false);
-        nav[1].addEventListener('click', Pagination.Next, false);
-    },
-
-    // create skeleton
-    Create: function (e) {
-
-        var html = [
-            '<a>&#9668;</a>', // previous button
-            '<span></span>',  // pagination container
-            '<a>&#9658;</a>'  // next button
-        ];
-
-        e.innerHTML = html.join('');
-        Pagination.e = e.getElementsByTagName('span')[0];
-        Pagination.Buttons(e);
-    },
-
-    // init
-    Init: function (e, data) {
-        Pagination.Extend(data);
-        Pagination.Create(e);
-        Pagination.Start();
-    }
-};
-
-
-
-
