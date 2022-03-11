@@ -170,12 +170,13 @@ const Netkathir = {
             if (cp == "Prev") {
                 if (this.currentpage > 1) {
                     this.currentpage--;
-                    if (this.startingPageNoG2 >= (this.startingPageNoG1 + this.lengthOfPageGroup)) {
-                        this.startingPageNoG2--;
-                    }
 
                     if (this.startingPageNoG1 > 1) {
                         this.startingPageNoG1--;
+                    }
+
+                    if ((this.startingPageNoG1 + this.lengthOfPageGroup) < this.startingPageNoG2) {
+                        this.startingPageNoG2--;
                     }
 
                     this.paging();
@@ -220,8 +221,7 @@ const Netkathir = {
             }
         }
     },
-
-    buttonGroup: function (pagesize, whereToStart = 1, length = 5, labelled = false, label = "Prev") {
+    buttonGroup: function (pagesize, whereToStart=1, length = 5, labelled=false, label = "Prev") {
 
         var div = document.createElement('div');
         div.setAttribute("class", "btn-group btn-group-lg");
@@ -262,7 +262,7 @@ const Netkathir = {
         let next = this.buttonGroup(pagesize, 1, 1, true, "Next");
 
         let startingGroup = this.buttonGroup(pagesize, this.startingPageNoG1, lengthOf);
-        let spacer1 = this.buttonGroup(pagesize, 1, 3, true, ".");
+        let spacer1 = this.buttonGroup(pagesize, 1, 2, true, ".");
         let closingGroup = this.buttonGroup(pagesize, this.startingPageNoG2, lengthOf);
 
         let div = document.createElement('div');
@@ -287,6 +287,6 @@ const Netkathir = {
         div = null; // just dereferencing ul element
         //filter initially
         this.filterTable(0, pagesize)
-    },
+    }
 
 };
