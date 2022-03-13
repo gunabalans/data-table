@@ -46,6 +46,7 @@ const Netkathir = {
     //pagination current page    
     lengthOfPageGroup: 3,
     currentpage: 1,
+    prevPage: 1,
     startingPageNoG1: 1,
     startingPageNoG2: 1,
 
@@ -169,6 +170,7 @@ const Netkathir = {
 
             if (cp == "Prev") {
                 if (this.currentpage > 1) {
+                    this.prevPage = this.currentpage;
                     this.currentpage--;
 
                     if (this.startingPageNoG1 > 1) {
@@ -184,6 +186,7 @@ const Netkathir = {
             } else if (cp == "Next") {
                 const totalRow = document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
                 if (this.currentpage < totalRow / pagesize) {
+                    this.prevPage = this.currentpage;
                     this.currentpage++;
                 }
 
@@ -200,19 +203,24 @@ const Netkathir = {
 
             } else {
                 if (Number.isInteger(parseInt(cp))) {
+                    this.prevPage = this.currentpage;
                     this.currentpage = parseInt(cp);
                 }
             }
-
 
             if (this.currentpage > 1) {
                 page = ((this.currentpage - 1) * pagesize) + 1;
             }
 
-            this.filterTable(page, pagesize)
+            if (Number.isInteger(parseInt(cp))) {
+                this.filterTable(page, pagesize)
+            }
+
+
 
             const searchFor = "button." + this.pagingButtonActive;
-            for (const li of t.parentElement.parentElement.querySelectorAll(searchFor)) {
+            var pr = t.parentElement.parentElement.querySelectorAll(searchFor);
+            for (const li of pr) {
                 li.classList.remove(this.pagingButtonActive);
             }
 
@@ -221,7 +229,7 @@ const Netkathir = {
             }
         }
     },
-    buttonGroup: function (pagesize, whereToStart=1, length = 5, labelled=false, label = "Prev") {
+    buttonGroup: function (pagesize, whereToStart = 1, length = 5, labelled = false, label = "Prev") {
 
         var div = document.createElement('div');
         div.setAttribute("class", "btn-group btn-group-lg");
@@ -238,6 +246,9 @@ const Netkathir = {
             } else {
                 button.setAttribute("id", i);
                 button.innerText = j;
+                if (this.currentpage == j) {
+                    button.classList.add(this.pagingButtonActive)
+                }
             }
 
             button.setAttribute("onclick", "Netkathir.showPage(this)");
@@ -253,13 +264,14 @@ const Netkathir = {
     },
     paging: function () {
         var pagesize = this.getPageSize();
-
+        var page = 1;
         const lengthOf = 3; //botton on each side
         const totalRow = document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
 
 
         let prev = this.buttonGroup(pagesize, 1, 1, true, "Prev");
         let next = this.buttonGroup(pagesize, 1, 1, true, "Next");
+
 
         let startingGroup = this.buttonGroup(pagesize, this.startingPageNoG1, lengthOf);
         let spacer1 = this.buttonGroup(pagesize, 1, 2, true, ".");
@@ -285,8 +297,13 @@ const Netkathir = {
         next = null;
         spacer1 = null;
         div = null; // just dereferencing ul element
-        //filter initially
-        this.filterTable(0, pagesize)
+
+        if (this.currentpage > 1) {
+            page = ((this.currentpage - 1) * pagesize) + 1;
+        }
+
+        this.filterTable(page, pagesize)
+
     }
 
 };
