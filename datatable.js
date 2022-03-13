@@ -57,17 +57,17 @@ const Netkathir = {
             this.getPageSizeFrom = params.getPageSizeFrom;
         }
 
-        if (this.tableId) {
+        if (params.tableId) {
             this.tableId = params.tableId;
         }
 
-        if (this.paginationContainer) {
+        if (params.paginationContainer) {
             this.paginationContainer = params.paginationContainer;
         }
 
 
         this.init();
-        this.initStartPageNoG2();//set the stating page of LAst part (G2) of pageination
+        this.initStartPageNoG2();//set the stating page of Last part (G2) of pageination
         this.paging();
     },
     getPageSize: function () {
@@ -76,10 +76,10 @@ const Netkathir = {
         if (Number.isInteger(ps)) {
             return ps;
         }
-        return 0;
+        return 10;
     },
     getTotalRows: function () {
-        return document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
+        return document.querySelectorAll(this.tableId + " tbody tr.s").length;
     },
     initStartPageNoG2: function () {
         const totalRow = this.getTotalRows();
@@ -97,7 +97,7 @@ const Netkathir = {
     },
     ft: function (t, j) {
 
-        var trs = document.querySelectorAll(this.tableId + " tr.s");
+        var trs = document.querySelectorAll(this.tableId + " tbody tr.s");
         var totalRow = trs.length;
         var filter = t.value.toUpperCase();
 
@@ -135,7 +135,7 @@ const Netkathir = {
 
     filterTable: function (page, pagesize) {
 
-        var trs = document.querySelectorAll(this.tableId + " tr.s")
+        var trs = document.querySelectorAll(this.tableId + " tbody tr.s")
         var totalRow = trs.length;
 
         //set starting point
@@ -184,7 +184,7 @@ const Netkathir = {
                     this.paging();
                 }
             } else if (cp == "Next") {
-                const totalRow = document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
+                const totalRow = document.querySelectorAll(this.tableId + " tbody tr.s").length; //remove header count
                 if (this.currentpage < totalRow / pagesize) {
                     this.prevPage = this.currentpage;
                     this.currentpage++;
@@ -266,7 +266,7 @@ const Netkathir = {
         var pagesize = this.getPageSize();
         var page = 1;
         const lengthOf = 3; //botton on each side
-        const totalRow = document.querySelectorAll(this.tableId + " tr.s").length; //remove header count
+        const totalRow = document.querySelectorAll(this.tableId + " tbody tr.s").length; //remove header count
 
 
         let prev = this.buttonGroup(pagesize, 1, 1, true, "Prev");
