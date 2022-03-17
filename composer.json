@@ -1,0 +1,8 @@
+{
+    "name": "data-table/data-table",
+    "description": "A simple data table using pure js with client pagination",
+    "keywords": ["data table", "javascrpt"],
+    "type": "project",
+    "main": "index.html",
+    "license": "MIT"
+}

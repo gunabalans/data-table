@@ -42,6 +42,7 @@ const Netkathir = {
     paginationContainer: "#pagination",
     pagingButtonForground: "btn-light",
     pagingButtonActive: "bg-primary",
+    addColSearch: true,
 
     //pagination current page    
     lengthOfPageGroup: 3,
@@ -88,23 +89,43 @@ const Netkathir = {
         this.startingPageNoG2 = Math.ceil(totalRow / pagesize) - (this.lengthOfPageGroup - 1);
     },
     init: function () {
-        let trs = document.querySelectorAll(this.tableId + " tbody tr");
+        // add column search
+        if (this.addColSearch) {
+            this.addFilterTextBox();
+        }
 
+        let trs = document.querySelectorAll(this.tableId + " tbody tr");
         for (const tr of trs) {
             tr.setAttribute('class', 's');
         }
         trs = null;
+    },
+    addFilterTextBox: function () {
+        let thead = document.querySelector(this.tableId + " thead");
+        let trcopy = thead.querySelector("tr").cloneNode(true);
+        let ths = trcopy.querySelectorAll("th");
+
+        var i = 0;
+        for (const th of ths) {
+            const txtValue = "Filter by " + (th.textContent || th.innerText);
+            th.innerHTML = '<input onchange="Netkathir.ft(this,' + i + ')" placeholder="' + txtValue + '" class="form-control" type="text" id="' + i + '"/>';
+            i++;
+        }
+
+        thead.appendChild(trcopy);
+        trcopy = null;
+        thead = null;
+        ths = null;
     },
     ft: function (t, j) {
 
         var trs = document.querySelectorAll(this.tableId + " tbody tr.s");
         var totalRow = trs.length;
         var filter = t.value.toUpperCase();
-
         //set starting point
         for (i = 0; i < totalRow; i++) {
             var td = trs[i].getElementsByTagName("td")[j];
-            if (td) {
+            if (filter.length > 1 && td) {
                 var txtValue = td.textContent || td.innerText;
 
                 trs[i].removeAttribute('class');
@@ -114,6 +135,8 @@ const Netkathir = {
                 } else {
                     trs[i].style.display = "none";
                 }
+            } else {
+                trs[i].setAttribute('class', 's');
             }
         }
 
@@ -184,7 +207,7 @@ const Netkathir = {
                     this.paging();
                 }
             } else if (cp == "Next") {
-                const totalRow = document.querySelectorAll(this.tableId + " tbody tr.s").length; //remove header count
+                const totalRow = getTotalRows();
                 if (this.currentpage < totalRow / pagesize) {
                     this.prevPage = this.currentpage;
                     this.currentpage++;
@@ -266,24 +289,45 @@ const Netkathir = {
         var pagesize = this.getPageSize();
         var page = 1;
         const lengthOf = 3; //botton on each side
-        const totalRow = document.querySelectorAll(this.tableId + " tbody tr.s").length; //remove header count
+        const totalRow = this.getTotalRows();
 
+
+        const totalpages = Math.ceil(totalRow / pagesize);
 
         let prev = this.buttonGroup(pagesize, 1, 1, true, "Prev");
         let next = this.buttonGroup(pagesize, 1, 1, true, "Next");
 
 
-        let startingGroup = this.buttonGroup(pagesize, this.startingPageNoG1, lengthOf);
-        let spacer1 = this.buttonGroup(pagesize, 1, 2, true, ".");
-        let closingGroup = this.buttonGroup(pagesize, this.startingPageNoG2, lengthOf);
 
-        let div = document.createElement('div');
+        var div = document.createElement('div');
         div.setAttribute("class", "btn-toolbar");
         div.setAttribute("role", "toolbar");
         div.appendChild(prev);
-        div.appendChild(startingGroup);
-        div.appendChild(spacer1);
-        div.appendChild(closingGroup);
+
+
+        if (totalpages - 3 < this.startingPageNoG1 + lengthOf - 1) {
+            let startingGroup = this.buttonGroup(pagesize, this.startingPageNoG1, this.startingPageNoG1 - totalpages + 1);
+            div.appendChild(startingGroup);
+        } else {
+            let startingGroup = this.buttonGroup(pagesize, this.startingPageNoG1, lengthOf);
+            div.appendChild(startingGroup);
+        }
+
+        if (this.startingPageNoG2 <= totalpages) {
+            var spacer1 = this.buttonGroup(pagesize, 1, 2, true, ".");
+            var closingGroup = this.buttonGroup(pagesize, this.startingPageNoG2, lengthOf);
+            div.appendChild(spacer1);
+            div.appendChild(closingGroup);
+        } else {
+            //1+3 (-1 + 3 = (2)) 
+            if (totalpages - 3 > this.startingPageNoG1 + lengthOf - 1) {
+                var spacer1 = this.buttonGroup(pagesize, 1, 2, true, ".");
+                var closingGroup = this.buttonGroup(pagesize, totalpages - 3, lengthOf);
+                div.appendChild(spacer1);
+                div.appendChild(closingGroup);
+            }
+        }
+
         div.appendChild(next);
 
         //list view
