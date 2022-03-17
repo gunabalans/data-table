@@ -1,8 +1,8 @@
 {
-    "name": "data-table/data-table",
+    "name": "netkathir/data-table",
     "description": "A simple data table using pure js with client pagination",
     "keywords": ["data table", "javascrpt"],
     "type": "project",
-    "main": "index.html",
+    "main": "datatable.js",
     "license": "MIT"
 }
