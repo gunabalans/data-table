@@ -1,8 +1,27 @@
 {
     "name": "netkathir/data-table",
     "description": "A simple data table using pure js with client pagination",
-    "keywords": ["data table", "javascrpt"],
-    "type": "project",
-    "main": "datatable.js",
-    "license": "MIT"
+    "keywords": ["data table","html","javascript"],
+    "type": "component",
+    "main": "dist/js/datatable.js",
+    "version": "1.0.0",
+    "author": "gunabalans@yahoo.com",
+    "homepage":"https://www.netkathir.com",
+    "license": "MIT",
+    "extra": {
+        "component": {
+          "scripts": [
+            "dist/js/datatable.js"
+          ],
+          "styles": [
+            "dist/css/datatable.css"
+          ],
+          "files": [
+            "dist/js/datatable.js",
+            "dist/css/datatable.css"
+          ]
+        }
+      }
 }
+
+
