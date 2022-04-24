@@ -207,7 +207,7 @@ const Netkathir = {
                     this.paging();
                 }
             } else if (cp == "Next") {
-                const totalRow = getTotalRows();
+                const totalRow = this.getTotalRows();
                 if (this.currentpage < totalRow / pagesize) {
                     this.prevPage = this.currentpage;
                     this.currentpage++;
