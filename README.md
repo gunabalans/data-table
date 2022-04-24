@@ -4,6 +4,10 @@ Convert existing table to paginated table, boostrap based style
 
 Best suitable for server rendered html table.
 
+ ```com
+composer require netkathir/data-table
+ ```
+ 
  ## Netkathir data table 
   
   @Example: add id to table
