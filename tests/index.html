@@ -27,18 +27,19 @@
           height="65"
         />
 
-        <select
-          onchange="Netkathir.paging()"
-          class="form-control sm"
-          id="pagesize"
-          style="width: 60px"
-        >
-          <option selected="selected" value="10">10</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-          <option value="500">500</option>
-        </select>
+          <select
+            onchange="Netkathir.paging()"
+            class="form-control sm"
+            id="pagesize"
+            style="width: 60px"
+          >
+            <option selected="selected" value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="500">500</option>
+          </select>
+         
       </div>
 
       <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -1028,7 +1029,7 @@
       Netkathir.start({
         tableId: "#data-table1",
         getPageSizeFrom: "#pagesize",
-        paginationContainer: "#pagination"
+        paginationContainer: "#pagination",
       });
     </script>
   </body>

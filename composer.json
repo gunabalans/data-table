@@ -4,7 +4,7 @@
     "keywords": ["data table","html","javascript"],
     "type": "component",
     "main": "dist/js/datatable.js",
-    "version": "1.0.1",
+    "version": "1.1",
     "author": "gunabalans@yahoo.com",
     "homepage":"https://www.netkathir.com",
     "license": "MIT",

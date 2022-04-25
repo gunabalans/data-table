@@ -51,7 +51,6 @@ const Netkathir = {
     startingPageNoG1: 1,
     startingPageNoG2: 1,
 
-
     start: function (params) {
 
         if (params.getPageSizeFrom) {
@@ -66,6 +65,9 @@ const Netkathir = {
             this.paginationContainer = params.paginationContainer;
         }
 
+        if (this.addColSearch) {
+            this.addFilterTextBox();
+        }
 
         this.init();
         this.initStartPageNoG2();//set the stating page of Last part (G2) of pageination
@@ -90,10 +92,6 @@ const Netkathir = {
     },
     init: function () {
         // add column search
-        if (this.addColSearch) {
-            this.addFilterTextBox();
-        }
-
         let trs = document.querySelectorAll(this.tableId + " tbody tr");
         for (const tr of trs) {
             tr.setAttribute('class', 's');
@@ -106,9 +104,10 @@ const Netkathir = {
         let ths = trcopy.querySelectorAll("th");
 
         var i = 0;
+
         for (const th of ths) {
             const txtValue = "Filter by " + (th.textContent || th.innerText);
-            th.innerHTML = '<input onchange="Netkathir.ft(this,' + i + ')" placeholder="' + txtValue + '" class="form-control" type="text" id="' + i + '"/>';
+            th.innerHTML = '<input onkeyup="Netkathir.ft(this,' + i + ', event)" placeholder="' + txtValue + '" class="form-control colsearch" type="text" id="' + i + '"/>';
             i++;
         }
 
@@ -117,23 +116,30 @@ const Netkathir = {
         thead = null;
         ths = null;
     },
-    ft: function (t, j) {
+    ft: function (t, j, event) {
 
         var trs = document.querySelectorAll(this.tableId + " tbody tr.s");
         var totalRow = trs.length;
+
+        event.preventDefault();
+        if(event.key == "Backspace"){
+            this.init();
+        }
         var filter = t.value.toUpperCase();
         //set starting point
+        
         for (i = 0; i < totalRow; i++) {
             var td = trs[i].getElementsByTagName("td")[j];
             if (filter.length > 1 && td) {
                 var txtValue = td.textContent || td.innerText;
 
                 trs[i].removeAttribute('class');
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                if (txtValue.toUpperCase().indexOf(filter) == -1) {
+                    trs[i].style.display = "none";
+                    
+                } else {
                     trs[i].style.display = "";
                     trs[i].setAttribute('class', 's');
-                } else {
-                    trs[i].style.display = "none";
                 }
             } else {
                 trs[i].setAttribute('class', 's');
@@ -163,6 +169,9 @@ const Netkathir = {
 
         //set starting point
         var min = page;
+        if (page <= 1) {
+            min = 0;
+        }
 
         if (page >= totalRow) {
             min = totalRow;
@@ -287,17 +296,14 @@ const Netkathir = {
     },
     paging: function () {
         var pagesize = this.getPageSize();
-        var page = 1;
+        var page = 0;
         const lengthOf = 3; //botton on each side
         const totalRow = this.getTotalRows();
-
 
         const totalpages = Math.ceil(totalRow / pagesize);
 
         let prev = this.buttonGroup(pagesize, 1, 1, true, "Prev");
         let next = this.buttonGroup(pagesize, 1, 1, true, "Next");
-
-
 
         var div = document.createElement('div');
         div.setAttribute("class", "btn-toolbar");
@@ -346,8 +352,31 @@ const Netkathir = {
             page = ((this.currentpage - 1) * pagesize) + 1;
         }
 
+
         this.filterTable(page, pagesize)
 
-    }
+    },
+    s2: function (e) {
+        e.preventDefault();
+        alert(e.key)
+        if (e.key === 'Enter') {
+            this.s(e.target);
+            this.hide();
+        } else if (e.key == 'ArrowUp') {
+            var focused = document.querySelector(this.selectListid + " ul li:focus");
+            if (focused != null) {
+                this.sUp(focused);
+            }
+            focused = null;
+        } else if (e.key == 'ArrowDown') {
+            var focused = document.querySelector(this.selectListid + " ul li:focus");
+            if (focused != null) {
+                this.sDown(focused);
+            }
+            focused = null;
+        }
+        e = null;
+    },
+
 
 };
