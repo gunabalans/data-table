@@ -106,8 +106,12 @@ const Netkathir = {
         var i = 0;
 
         for (const th of ths) {
-            const txtValue = "Filter by " + (th.textContent || th.innerText);
-            th.innerHTML = '<input onkeyup="Netkathir.ft(this,' + i + ', event)" placeholder="' + txtValue + '" class="form-control colsearch" type="text" id="' + i + '"/>';
+            if (i == 0) {
+                th.innerHTML = '<input type="button" value="Reset" onclick="Netkathir.ftreset()" />';
+            } else {
+                const txtValue = "Filter by " + (th.textContent || th.innerText);
+                th.innerHTML = '<div style="display:flex;justify-content: center;align-items: center;column-gap: 10px;"><input style="flex:90%" onkeyup="Netkathir.ft(this,' + i + ', event)" placeholder="' + txtValue + '" class="form-control colsearch" type="text" id="' + i + '"/> <span style="flex:10%;text-align:center;font-size: 1.5rem;cursor:pointer">&#8597;</span></div>';
+            }
             i++;
         }
 
@@ -320,10 +324,12 @@ const Netkathir = {
         }
 
         if (this.startingPageNoG2 <= totalpages) {
-            var spacer1 = this.buttonGroup(pagesize, 1, 2, true, ".");
-            var closingGroup = this.buttonGroup(pagesize, this.startingPageNoG2, lengthOf);
-            div.appendChild(spacer1);
-            div.appendChild(closingGroup);
+            if (this.startingPageNoG2 >= 1) {
+                var spacer1 = this.buttonGroup(pagesize, 1, 2, true, ".");
+                var closingGroup = this.buttonGroup(pagesize, this.startingPageNoG2, lengthOf);
+                div.appendChild(spacer1);
+                div.appendChild(closingGroup);
+            }
         } else {
             //1+3 (-1 + 3 = (2)) 
             if (totalpages - 3 > this.startingPageNoG1 + lengthOf - 1) {
@@ -356,7 +362,20 @@ const Netkathir = {
         this.filterTable(page, pagesize)
 
     },
+    sort:function (col) {
+        var trs = document.querySelectorAll(this.tableId + " tbody tr.s");
+        var sortObj = {};
+        for (const tr of trs) {
+            
+            var td = tr.getElementsByTagName("td")[col];
+            if (td) {
+                var txtValue = td.textContent || td.innerText;
+                sortObj[tr.rowIndex] = txtValue.toUpperCase();
+            }
+        }
+    },
     s2: function (e) {
+        //not in use
         e.preventDefault();
         alert(e.key)
         if (e.key === 'Enter') {
