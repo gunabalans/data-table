@@ -1,40 +1,3 @@
-/**
- * Netkathir data table 
- * 
- * @Example: add id to table
- * 
- * Add page size select box where required
- *      <select
- *         onchange="Netkathir.paging()"
- *         class="form-control sm"
- *         id="pagesize"
- *         style="width: 60px">
- *         <option selected="selected" value="10">10</option>
- *         <option value="25">25</option>
- *         <option value="50">50</option>
- *         <option value="100">100</option>
- *         <option value="500">500</option>
- *       </select>
- *
- * add paging container where u want
- * <nav id="pagination"></nav>
- * 
- *   Call paging onload (default values - you can change)
- *      tableId: "#data-table1",
- *      getPageSizeFrom: "#pagesize",
- *      paginationContainer: "#pagination"  
- *  
- *   <script>
- *     Netkathir.start({
- *       tableId: "#data-table1",
- *       getPageSizeFrom: "#pagesize",
- *       paginationContainer: "#pagination"
- *     });
- *   </script>
- * 
- * @author gunabalans@gmail.com
- * @site https://www.netkathir.com
- */
 const Netkathir = {
 
     tableId: "#data-table",
@@ -66,11 +29,35 @@ const Netkathir = {
         }
 
         if (this.addColSearch) {
-            this.addFilterTextBox();
+            this.addSearchBox();
         }
 
         this.init();
         this.initStartPageNoG2();//set the stating page of Last part (G2) of pageination
+        this.paging();
+    },
+    addSearchBox: function() {
+        let thead = document.querySelector(this.tableId + ' thead');
+        let searchRow = document.createElement('tr');
+        let th = document.createElement('th');
+        th.colSpan = thead.querySelectorAll('th').length;
+        th.innerHTML = '<input type="text" placeholder="Search..." onkeyup="Netkathir.search(this)" class="form-control" />';
+        searchRow.appendChild(th);
+        thead.insertBefore(searchRow, thead.firstChild);
+    },
+    search: function(input) {
+        let filter = input.value.toUpperCase();
+        let rows = document.querySelectorAll(this.tableId + ' tbody tr.s');
+
+        rows.forEach(row => {
+            let text = row.innerText.toUpperCase();
+            if (text.indexOf(filter) > -1) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
         this.paging();
     },
     getPageSize: function () {
@@ -97,28 +84,6 @@ const Netkathir = {
             tr.setAttribute('class', 's');
         }
         trs = null;
-    },
-    addFilterTextBox: function () {
-        let thead = document.querySelector(this.tableId + " thead");
-        let trcopy = thead.querySelector("tr").cloneNode(true);
-        let ths = trcopy.querySelectorAll("th");
-
-        var i = 0;
-
-        for (const th of ths) {
-            if (i == 0) {
-                th.innerHTML = '<input type="button" value="Reset" onclick="Netkathir.ftreset()" />';
-            } else {
-                const txtValue = "Filter by " + (th.textContent || th.innerText);
-                th.innerHTML = '<div style="display:flex;justify-content: center;align-items: center;column-gap: 10px;"><input style="flex:90%" onkeyup="Netkathir.ft(this,' + i + ', event)" placeholder="' + txtValue + '" class="form-control colsearch" type="text" id="' + i + '"/> <span style="flex:10%;text-align:center;font-size: 1.5rem;cursor:pointer">&#8597;</span></div>';
-            }
-            i++;
-        }
-
-        thead.appendChild(trcopy);
-        trcopy = null;
-        thead = null;
-        ths = null;
     },
     ft: function (t, j, event) {
 
@@ -251,7 +216,6 @@ const Netkathir = {
             if (Number.isInteger(parseInt(cp))) {
                 this.filterTable(page, pagesize)
             }
-
 
 
             const searchFor = "button." + this.pagingButtonActive;
