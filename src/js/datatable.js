@@ -38,14 +38,14 @@ const Netkathir = {
     },
     addSearchBox: function() {
         let thead = document.querySelector(this.tableId + ' thead');
-        let searchRow = document.createElement('tr');
+        // let searchRow = document.createElement('tr');
         let th = document.createElement('th');
         th.colSpan = thead.querySelectorAll('th').length;
-        th.innerHTML = '<input type="text" placeholder="Search..." onkeyup="Netkathir.search(this)" class="form-control" />';
-        searchRow.appendChild(th);
-        thead.insertBefore(searchRow, thead.firstChild);
+        // th.innerHTML = '<input type="text" placeholder="Search..." onkeyup="Netkathir.search(this)" class="form-control" />';
+        // searchRow.appendChild(th);
+        // thead.insertBefore(searchRow, thead.firstChild);
     },
-    search: function(input) {
+    // search: function(input) {
         let filter = input.value.toUpperCase();
         let rows = document.querySelectorAll(this.tableId + ' tbody tr.s');
 
@@ -78,7 +78,7 @@ const Netkathir = {
         this.startingPageNoG2 = Math.ceil(totalRow / pagesize) - (this.lengthOfPageGroup - 1);
     },
     init: function () {
-        // add column search
+        // // add column search
         let trs = document.querySelectorAll(this.tableId + " tbody tr");
         for (const tr of trs) {
             tr.setAttribute('class', 's');
@@ -122,8 +122,8 @@ const Netkathir = {
     ftreset: function () {
         this.init();
 
-        //column search clear
-        let cols = document.querySelectorAll("input.colsearch");
+        // //column search clear
+        // let cols = document.querySelectorAll("input.colsearch");
         for (const col of cols) {
             col.value = '';
         }
@@ -218,8 +218,8 @@ const Netkathir = {
             }
 
 
-            const searchFor = "button." + this.pagingButtonActive;
-            var pr = t.parentElement.parentElement.querySelectorAll(searchFor);
+            // const searchFor = "button." + this.pagingButtonActive;
+            // var pr = t.parentElement.parentElement.querySelectorAll(searchFor);
             for (const li of pr) {
                 li.classList.remove(this.pagingButtonActive);
             }
